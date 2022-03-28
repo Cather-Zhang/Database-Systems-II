@@ -23,15 +23,15 @@ public class Frame {
     }
 
     /**
-     * 
-     * @return
+     * getter
+     * @return content 
      */
     public byte[] getContent() {
         return this.content;
     }
 
     /**
-     * 
+     * setter
      * @param cont
      */
     public void setContent(byte[] cont) {
@@ -39,15 +39,15 @@ public class Frame {
     }
 
     /**
-     * 
-     * @return
+     * getter
+     * @return dirty
      */
     public boolean getDirty() {
         return this.dirty;
     }
 
     /**
-     * 
+     * setter
      * @param dir
      */
     public void setDirty(boolean dir) {
@@ -55,7 +55,7 @@ public class Frame {
     }
 
     /**
-     * 
+     * getter
      * @return
      */
     public boolean getPinned() {
@@ -63,7 +63,7 @@ public class Frame {
     }
 
     /**
-     * 
+     * setter
      * @param pin
      */
     public void setPinned(boolean pin) {
@@ -71,15 +71,15 @@ public class Frame {
     }
 
     /**
-     * 
-     * @return
+     * getter
+     * @return blockId
      */
     public int getBlockId() {
         return this.blockId;
     }
 
     /**
-     * 
+     * setter
      * @param id
      */
     public void setBlockId(int id) {
@@ -87,9 +87,9 @@ public class Frame {
     }
 
     /**
-     * 
+     * get the record (as a string) with record number
      * @param recordNum
-     * @return
+     * @return record
      */
     public String getRecord(int recordNum) {
         byte[] out = new byte[40];
@@ -102,7 +102,7 @@ public class Frame {
     }
 
     /**
-     * 
+     * update the record given record number and new content
      * @param recordContent
      * @param recordNum
      */
