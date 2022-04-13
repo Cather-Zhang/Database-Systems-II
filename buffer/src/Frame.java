@@ -1,5 +1,3 @@
-package buffer;
-
 public class Frame {
     private byte[] content;
     private boolean dirty;
@@ -24,7 +22,8 @@ public class Frame {
 
     /**
      * getter
-     * @return content 
+     * 
+     * @return content
      */
     public byte[] getContent() {
         return this.content;
@@ -32,6 +31,7 @@ public class Frame {
 
     /**
      * setter
+     * 
      * @param cont
      */
     public void setContent(byte[] cont) {
@@ -40,6 +40,7 @@ public class Frame {
 
     /**
      * getter
+     * 
      * @return dirty
      */
     public boolean getDirty() {
@@ -48,6 +49,7 @@ public class Frame {
 
     /**
      * setter
+     * 
      * @param dir
      */
     public void setDirty(boolean dir) {
@@ -56,6 +58,7 @@ public class Frame {
 
     /**
      * getter
+     * 
      * @return
      */
     public boolean getPinned() {
@@ -64,6 +67,7 @@ public class Frame {
 
     /**
      * setter
+     * 
      * @param pin
      */
     public void setPinned(boolean pin) {
@@ -72,6 +76,7 @@ public class Frame {
 
     /**
      * getter
+     * 
      * @return blockId
      */
     public int getBlockId() {
@@ -80,6 +85,7 @@ public class Frame {
 
     /**
      * setter
+     * 
      * @param id
      */
     public void setBlockId(int id) {
@@ -88,10 +94,13 @@ public class Frame {
 
     /**
      * get the record (as a string) with record number
+     * 
      * @param recordNum
      * @return record
      */
     public String getRecord(int recordNum) {
+        if (recordNum == 0)
+            recordNum = 100;
         byte[] out = new byte[40];
         for (int i = 0; i < 40; i++) {
             int j = (recordNum - 1) * 40 + i;
@@ -103,10 +112,13 @@ public class Frame {
 
     /**
      * update the record given record number and new content
+     * 
      * @param recordContent
      * @param recordNum
      */
     public void updateRecord(byte[] recordContent, int recordNum) {
+        if (recordNum == 0)
+            recordNum = 100;
         for (int i = 0; i < 40; i++) {
             int j = (recordNum - 1) * 40 + i;
             this.content[j] = recordContent[i];
