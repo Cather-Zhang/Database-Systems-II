@@ -12,15 +12,17 @@ public class FullTableScan {
      * @param randomV
      */
     public void get(int randomV) {
+        long start = System.currentTimeMillis();
         Path path;
         byte[] data = new byte[4000];
         int value = 0;
         byte[] out = new byte[40];
         String record;
-        int count = 0;
+        int count = 0, block = 0;
 
         for (int i = 1; i < 100; i++) {
             path = Paths.get("Project2Dataset/F" + i + ".txt");
+            block++;
             try {
                 data = Files.readAllBytes(path);
                 for (int j = 0; j < 100; j++) {
@@ -41,19 +43,27 @@ public class FullTableScan {
                 e.printStackTrace();
             }
         }
-        System.out.println(count);
+        long finish = System.currentTimeMillis();
+        long timeElapsed = finish - start;
+        System.out.println("The number of records whose RandomV are equal to " + randomV + " is " + count);
+        System.out.println("Full Table Scan is used");
+        System.out.println("Execution time is " + timeElapsed + " ms");
+        System.out.println("The program needed to read " + block + " blocks");
+
     }
 
     public void range(int lower, int upper) {
+        long start = System.currentTimeMillis();
         Path path;
         byte[] data = new byte[4000];
         int value = 0;
         byte[] out = new byte[40];
         String record;
-        int count = 0;
+        int count = 0, block = 0;
 
         for (int i = 1; i < 100; i++) {
             path = Paths.get("Project2Dataset/F" + i + ".txt");
+            block++;
             try {
                 data = Files.readAllBytes(path);
                 for (int j = 0; j < 100; j++) {
@@ -74,19 +84,28 @@ public class FullTableScan {
                 e.printStackTrace();
             }
         }
-        System.out.println(count);
+        long finish = System.currentTimeMillis();
+        long timeElapsed = finish - start;
+        System.out.println("The number of records whose RandomV are > " + lower + " and < " + upper + " is " + count);
+        System.out.println("Full Table Scan is used");
+        System.out.println("Execution time is " + timeElapsed + " ms");
+        System.out.println("The program needed to read " + block + " blocks");
+
     }
 
     public void inequality(int randomV) {
+        long start = System.currentTimeMillis();
         Path path;
         byte[] data = new byte[4000];
         int value = 0;
         byte[] out = new byte[40];
         String record;
-        int count = 0;
+        int count = 0, block = 0;
+        ;
 
         for (int i = 1; i < 100; i++) {
             path = Paths.get("Project2Dataset/F" + i + ".txt");
+            block++;
             try {
                 data = Files.readAllBytes(path);
                 for (int j = 0; j < 100; j++) {
@@ -95,13 +114,13 @@ public class FullTableScan {
                             10 * (int) ((char) data[35 + 40 * j] - 48) +
                             (int) ((char) data[36 + 40 * j] - 48);
                     if (value != randomV) {
-                        /*
-                         * for (int k = 0; k < 40; k++) {
-                         * out[k] = data[k + 40 * j];
-                         * }
-                         * record = new String(out);
-                         * System.out.println(record);
-                         */
+
+                        for (int k = 0; k < 40; k++) {
+                            out[k] = data[k + 40 * j];
+                        }
+                        record = new String(out);
+                        System.out.println(record);
+
                         count++;
                     }
                 }
@@ -109,7 +128,12 @@ public class FullTableScan {
                 e.printStackTrace();
             }
         }
-        System.out.println(count);
+        long finish = System.currentTimeMillis();
+        long timeElapsed = finish - start;
+        System.out.println("The number of records whose RandomV are not equal to " + randomV + " is " + count);
+        System.out.println("Full Table Scan is used");
+        System.out.println("Execution time is " + timeElapsed + " ms");
+        System.out.println("The program needed to read " + block + " blocks");
     }
 
 }
