@@ -49,26 +49,20 @@ public class Main {
                 case (1):
                     if (index) {
                         hi.get(Integer.parseInt(command[7]));
-                        ai.get(Integer.parseInt(command[7]));
                     } else {
                         fts.get(Integer.parseInt(command[7]));
                     }
                     break;
                 case (2):
                     if (index) {
-                        hi.range(Integer.parseInt(command[7]), Integer.parseInt(command[11]));
                         ai.range(Integer.parseInt(command[7]), Integer.parseInt(command[11]));
                     } else {
                         fts.range(Integer.parseInt(command[7]), Integer.parseInt(command[11]));
                     }
                     break;
                 case (3):
-                    if (index) {
-                        hi.inequality(Integer.parseInt(command[7]));
-                        ai.inequality(Integer.parseInt(command[7]));
-                    } else {
-                        fts.inequality(Integer.parseInt(command[7]));
-                    }
+                    fts.inequality(Integer.parseInt(command[7]));
+
             }
         }
         s.close();
