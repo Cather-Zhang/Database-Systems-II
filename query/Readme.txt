@@ -8,13 +8,16 @@ How to execute the project:
 - run command "javac Main.java" to compile
 - run command "java Main" to start
 - use query commands for functionality, and "exit" to terminate the program
+    - either "SELECT A.Col1, A.Col2, B.Col1, B.Col2 FROM A, B WHERE A.RandomV = B.RandomV"
+    - or "SELECT count(*) FROM A, B WHERE A.RandomV > B.RandomV"
 
 Note:
-- all the files are already located in src folder under Project1.
-
+- datasets are already located in src folder under Project1.
 
 Section II:
-Program functions properly
+Program functions properly with correct outputs
 
 Section III:
-- I kept the locations of the records with given RandomV as a single string, each with two characters (ASCII value is file#, record#)
+- The records in hash table were left unsorted. Therefore, I simply looped through the bucket to find the correct A-records. This design is less efficient than if we sort the records, but it works.
+- Col1 and Col2 of A were identified as "Fi,Recj" and "Namej". And these two strings were kept in an arraylist. Therefore, the hash table values was an arraylist of arraylist.
+
